@@ -28,8 +28,7 @@ public class AvaliacaoFisicaServiceImpl implements IAvaliacaoFisicaService {
     @Override
     public AvaliacaoFisica create (AvaliacaoFisicaForm form) {
         AvaliacaoFisica avaliacaoFisica = new AvaliacaoFisica(  );
-        Aluno aluno;
-        aluno = alunoRepository.findAllById(Collections.singleton (form.getAlunoId ( ))).get ( );
+        Aluno aluno = (Aluno) alunoRepository.findAllById( Collections.singleton( form.getAlunoId( ) ) );
 
         avaliacaoFisica.setAluno(aluno);
         avaliacaoFisica.setPeso(form.getPeso( ));
@@ -56,5 +55,13 @@ public class AvaliacaoFisicaServiceImpl implements IAvaliacaoFisicaService {
     @Override
     public void delete (Long id) {
 
+    }
+
+    public void setAvaliacaoFisicaRepository (AvaliacaoFisicaRepository avaliacaoFisicaRepository) {
+        this.avaliacaoFisicaRepository = avaliacaoFisicaRepository;
+    }
+
+    public void setAlunoRepository (AlunoRepository alunoRepository) {
+        this.alunoRepository = alunoRepository;
     }
 }

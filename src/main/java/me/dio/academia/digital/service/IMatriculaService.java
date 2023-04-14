@@ -33,4 +33,5 @@ public interface IMatriculaService {
    */
   void delete(Long id);
 
+  Matricula clone (MatriculaForm form);
 }
